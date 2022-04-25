@@ -1,19 +1,5 @@
 .container{
-	max-width: 1200px; 
-	margin: 0 auto;
-	background: rgb(175, 222, 176);
-	display: grid;
-	width: 100vw;
-	height: 100vh;
-	grid-template-columns:
-   	1fr       2fr       1fr;
-   	grid-template-areas:
-    "heady     heady     heady"
-    "navvy     navvy     navvy"
-    "aside1    mainy     aside2"
-    "aside1    mainy     aside2"
-    "aside1    mainy     aside2"
-    "footy     footy     footy";
+	@include container-grid;
 }
 
 header {
@@ -24,7 +10,11 @@ nav {
 	grid-area: navvy; 
 	background:rgb(232, 206, 236);
 }
-main {grid-area: mainy; 
+
+@include nav-bar;
+
+main {
+	grid-area: mainy; 
 	background: rgb(240, 234, 182); 
 	max-height: 100%;
 }
@@ -37,16 +27,6 @@ main {grid-area: mainy;
 footer {
 	grid-area: footy; 
 	background: rgb(171, 171, 171);
-}
-
-nav ul {
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: space-around;
-}
-
-nav ul li {
-	list-style: none
 }
 
 @media screen and (min-width: 641px) and (max-width: 900px) {
@@ -80,7 +60,7 @@ nav ul li {
 	}
 	nav ul li a {
 		display: block;
-		padding: 10px 5px;
+		padding: $ten h($ten);
 		margin: 5px;
 		border: 1px black solid;
 		background: white;
